@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Character = require('../../api/characters/character.model');
-const Affiliation = require('../../api/affiliation/affiliation.model');
 
 const dotenv = require('dotenv'); //Estas 3 lineas es para poder usar la url del DB que esta en .env
 dotenv.config();
@@ -8,8 +7,7 @@ const urlDb = process.env.DB_URL;
 
 
 
-
-
+//HAY QUE COPIAR LA ID DE FACTION EN AFFILATION , HAY QUE EJECUTAR LA SEED DE AFFILATION ANTES QUE ESTA
 
 const characters = [
     {
@@ -17,7 +15,7 @@ const characters = [
         realName: 'Angela Ziegler',
         age: 37,
         nationality: 'Swiss',
-        affilation: '629b77ca98777d0fea1838cf',
+        affilation: '629b98dd6dcd54a5175eb9af',
         role:'Support',
         image:'https://static.wikia.nocookie.net/overwatch_gamepedia/images/d/d2/Mercy-portrait.png/revision/latest?cb=20160620024553'
     },
@@ -26,7 +24,7 @@ const characters = [
         realName: 'Reinhardt Wilhelm',
         age: 61,
         nationality: 'German',
-        affilation: '629b77ca98777d0fea1838cf',
+        affilation: '629b98dd6dcd54a5175eb9af',
         role: 'Tank',
         image: 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/0/07/Reinhardt-portrait.png/revision/latest?cb=20160620013222'
     },
@@ -43,7 +41,7 @@ const characters = [
         realName: `Akande Ogundimu`,
         age: 45,
         nationality: 'Nigerian',
-        affilation: '629b77ca98777d0fea1838d0',
+        affilation: '629b98dd6dcd54a5175eb9b0',
         role: 'DPS',
         image: 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/1/15/Doomfist_Artwork.png/revision/latest?cb=20170927195416'   
     },
@@ -51,7 +49,7 @@ const characters = [
         name: `Moira O'Deorain`,
         age: 45,
         nationality: 'Irsh',
-        affilation: '629b77ca98777d0fea1838d0',
+        affilation: '629b98dd6dcd54a5175eb9b0',
         role: 'Support',
         image: 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/b5/Moira.png/revision/latest?cb=20171104021652' 
     },
@@ -80,4 +78,5 @@ mongoose.connect(urlDb,{
     await Character.insertMany(characters);
 }).catch((err) => {
     console.log(`Error creating db characters: ${err}`);
-}).finally( () => mongoose.disconnect());
+}).finally( () => mongoose.disconnect());  
+

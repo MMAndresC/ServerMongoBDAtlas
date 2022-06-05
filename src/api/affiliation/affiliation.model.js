@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const affiliationSchema = new Schema({
-    faction: {type: String, required: true},
+    faction: {type: String, required: true }, 
     description: {type: String}
 },
 {
-    timestamps: true
+    timestamps: true,
 });
 
 const Affiliation = mongoose.model('affiliation', affiliationSchema );

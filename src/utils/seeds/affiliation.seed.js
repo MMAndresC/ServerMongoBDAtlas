@@ -21,6 +21,7 @@ const affiliations = [
     }
 ];
 
+
 mongoose.connect(urlDb,{
     useNewUrlParser:true,
     useUnifiedTopology:true
@@ -34,8 +35,14 @@ mongoose.connect(urlDb,{
 }).catch((err) =>{
     console.log(`error deleting db ${err}`);
 }).then( async() =>{
-    await Affiliation.insertMany(affiliations);
+    await Affiliation.insertMany(affiliations)
     console.log('Created affiliation db');
 }).catch((err) =>{
     console.log(`error loading seed ${err}`);
-}).finally(()=> mongoose.disconnect());
+}).finally(()=> mongoose.disconnect()); 
+
+
+
+
+
+
