@@ -7,9 +7,9 @@ const characterSchema = new Schema({
     realName: {type: String},
     age: {type: Number, min: 1, max: 120},
     nationality: {type: String},
-    affilation: {type: Schema.Types.ObjectId, ref: 'faction'},
+    faction: {type: Schema.Types.ObjectId, ref: 'faction'},
     role: {type: String, required: true},
-    image: {type: String, required: true}
+    image: {type: String}
 },
 {
     timestamps: true

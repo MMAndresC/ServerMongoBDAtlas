@@ -1,9 +1,9 @@
 
-const Affiliation = require('./affiliation.model');
+const Faction = require('./faction.model');
 
 const getAllFactions = async(req,res,next) =>{
     try{
-        const total = await Affiliation.find();
+        const total = await Faction.find();
         return res.status(200).json(total);
         
     }catch(err){
@@ -14,7 +14,7 @@ const getAllFactions = async(req,res,next) =>{
 const findFactionByName = async(req,res,next) =>{
     try{
         const {faction} = req.params;
-        const result = await Affiliation.find({faction: faction}).collation({locale: 'en',strength:2}); //collation es para case insesitive       
+        const result = await Faction.find({faction: faction}).collation({locale: 'en',strength:2}); //collation es para case insesitive       
         if(result.length){
             return res.status(200).json(result);
         }else{
@@ -25,9 +25,16 @@ const findFactionByName = async(req,res,next) =>{
     }
 }
 
-const createNewFaction = async(req,res,next) =>{ //No funciona, graba uno vacio, req.body aparece vacio
+const createNewFaction = async(req,res,next) =>{ //No funcionaba, graba uno vacio, req.body aparece vacio
     try{
-        const newFaction = new Affiliation(req.body);
+        const newFaction = new Faction(req.body);
+        if(!newFaction.faction){
+            return next('Faction is required');
+        }
+        const factionFind = await Faction.find({faction: newFaction.faction}).collation({locale: 'en', strength: 2});
+        if(factionFind.length){
+            return next('Faction already exists');
+        }
         const factionDB = await newFaction.save();
         return res.status(201).json(factionDB);
     }catch(err){
@@ -38,9 +45,9 @@ const createNewFaction = async(req,res,next) =>{ //No funciona, graba uno vacio,
 const updateFactionById = async(req,res,next) =>{
     try{
         const {id} = req.params;
-        const bodyUpdate = new Affiliation(req.body);
+        const bodyUpdate = new Faction(req.body);
         bodyUpdate._id = id; //Hay que añadir al registro el id
-        const updateFaction = await Affiliation.findByIdAndUpdate(id, bodyUpdate);
+        const updateFaction = await Faction.findByIdAndUpdate(id, bodyUpdate);
         if(updateFaction){
            return res.status(200).json(updateFaction); 
         }else{
@@ -58,13 +65,13 @@ const updateFactionById = async(req,res,next) =>{
 const deleteFactionById = async(req,res,next) =>{
     try{
         const {id} = req.params;
-        const deletedFaction =await Affiliation.findByIdAndDelete(id)
+        const deletedFaction =await Faction.findByIdAndDelete(id)
         if(!deletedFaction){
             const err = new Error;
             err.status = 404;
             return next(`document doesnt exist`,err);
         }
-        return res.status(200).json('Deleted'); //Si devuelvo deletedFaction salta el error del next
+        return res.status(200).json(`Faction ${deletedFaction.faction} deleted`);
     }catch(err){
         return next('el del next', err); 
     }

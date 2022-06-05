@@ -15,7 +15,7 @@ const characters = [
         realName: 'Angela Ziegler',
         age: 37,
         nationality: 'Swiss',
-        affilation: '629b98dd6dcd54a5175eb9af',
+        faction: '629cf650295db77e5a85adc0',
         role:'Support',
         image:'https://static.wikia.nocookie.net/overwatch_gamepedia/images/d/d2/Mercy-portrait.png/revision/latest?cb=20160620024553'
     },
@@ -24,7 +24,7 @@ const characters = [
         realName: 'Reinhardt Wilhelm',
         age: 61,
         nationality: 'German',
-        affilation: '629b98dd6dcd54a5175eb9af',
+        faction: '629cf650295db77e5a85adc0',
         role: 'Tank',
         image: 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/0/07/Reinhardt-portrait.png/revision/latest?cb=20160620013222'
     },
@@ -41,15 +41,16 @@ const characters = [
         realName: `Akande Ogundimu`,
         age: 45,
         nationality: 'Nigerian',
-        affilation: '629b98dd6dcd54a5175eb9b0',
+        faction: '629cf650295db77e5a85adc1',
         role: 'DPS',
         image: 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/1/15/Doomfist_Artwork.png/revision/latest?cb=20170927195416'   
     },
     {
-        name: `Moira O'Deorain`,
+        name: 'Moira',
+        realName: `Moira O'Deorain`,
         age: 45,
         nationality: 'Irsh',
-        affilation: '629b98dd6dcd54a5175eb9b0',
+        faction: '629cf650295db77e5a85adc1',
         role: 'Support',
         image: 'https://static.wikia.nocookie.net/overwatch_gamepedia/images/b/b5/Moira.png/revision/latest?cb=20171104021652' 
     },

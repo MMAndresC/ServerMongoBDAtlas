@@ -1,5 +1,6 @@
 const express = require('express');
-const FactionRoutes = require('./src/api/affiliation/affiliation.routes');
+const FactionRoutes = require('./src/api/factions/faction.routes');
+const CharacterRoutes = require('./src/api/characters/character.routes');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -15,7 +16,9 @@ const bp = require('body-parser'); //si no pongo esto el req.body aparece como u
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true })); 
 /************************************************************* */
+
 app.use('/factions',FactionRoutes);
+app.use('/characters',CharacterRoutes);
 
 app.use('/',(req,res) =>{
     console.log('Root');

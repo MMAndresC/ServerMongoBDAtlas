@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const affiliationSchema = new Schema({
+const factionSchema = new Schema({
     faction: {type: String, required: true }, 
     description: {type: String}
 },
@@ -10,6 +10,6 @@ const affiliationSchema = new Schema({
     timestamps: true,
 });
 
-const Affiliation = mongoose.model('affiliation', affiliationSchema );
+const Faction = mongoose.model('faction', factionSchema );
 
-module.exports = Affiliation;
+module.exports = Faction;

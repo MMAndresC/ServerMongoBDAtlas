@@ -5,7 +5,7 @@ const {
     createNewFaction, 
     updateFactionById,
     deleteFactionById
-} = require('./affiliation.controller');
+} = require('./faction.controller');
 
 const FactionRoutes = express.Router();
 
