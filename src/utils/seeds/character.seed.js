@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 const Character = require('../../api/characters/character.model');
 
+
 const dotenv = require('dotenv'); //Estas 3 lineas es para poder usar la url del DB que esta en .env
 dotenv.config();
 const urlDb = process.env.DB_URL;
 
 
 
-//HAY QUE COPIAR LA ID DE FACTION EN AFFILATION , HAY QUE EJECUTAR LA SEED DE AFFILATION ANTES QUE ESTA
+//HAY QUE COPIAR LA ID DE FACTION  , HAY QUE EJECUTAR LA SEED DE FACTION ANTES QUE ESTA
 
 const characters = [
     {

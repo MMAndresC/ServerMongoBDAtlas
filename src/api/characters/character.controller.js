@@ -35,6 +35,11 @@ const createCharacter = async(req,res,next) =>{
         if(nameFound.length){ //La linea de arriba y esta es para comprobar si ya existe el documento para evitar duplicar entradas
             return next(`Character exists`);        
         } 
+        ////AQUI HAY QUE PONER LO DE CLOUDINARY
+        if(req.file){
+            newCharacter.image = req.file.path; //nombre del campo, en este caso es image
+        }
+        //---------------------------------------/
         const insertCharacter = await newCharacter.save();
         return res.status(200).json(insertCharacter);
     }catch(err){
@@ -55,7 +60,6 @@ const updateCharacterById = async(req,res,next) =>{
         if(name){ //controla si se pone nombre que no se modifique y coja un nombre ya usado por otro personaje
             const nameRepeated = await Character.find({name: name, _id:id}).collation({locale: 'en', strength:2});
             if(!nameRepeated.length){
-                console.log('aqui?')
                 return next('Name in use, cant duplicate character');
             }
         }

@@ -1,6 +1,9 @@
+//para usar cloudinary --> npm i cloudinary multer multer-storage-cloudinary 
+
 const cors = require('cors');
 const dotenv = require('dotenv');
 const express = require('express');
+const cloudinary = require('cloudinary').v2;
 
 
 const CharacterRoutes = require('./src/api/characters/character.routes');
@@ -10,6 +13,12 @@ const UserRoutes = require('./src/api/users/user.routes');
 
 dotenv.config();
 const PORT = process.env.PORT || 8080;
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+})
 
 const {connectDb} = require('./src/utils/database/database');
 
